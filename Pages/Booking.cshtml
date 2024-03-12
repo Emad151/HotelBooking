@@ -1,0 +1,41 @@
+﻿@page
+@model BookingModel
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hotel Booking</h1>
+    <div class="row justify-content-center" >
+        <div class="col-md-6">
+            <div asp-validation-summary="All"></div>
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.CheckIn">CheckIn</label>
+                    <input type="date" asp-for="ReservationInfo.CheckIn" class="form-control" />
+                    <span asp-validation-for="ReservationInfo.CheckIn"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.Checkout">Checkout</label>
+                    <input type="date" asp-for="ReservationInfo.Checkout" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.NumberOfAdults">Number of Adults</label>
+                    <input asp-for="ReservationInfo.NumberOfAdults" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.NumberOfChildren">Number of Children</label>
+                    <input asp-for="ReservationInfo.NumberOfChildren" class="form-control" />
+                </div>
+                
+                <button class="btn btn-success">see available rooms</button>
+
+            </form>
+
+
+
+        </div>
+    </div>
+    
+</div>
+
