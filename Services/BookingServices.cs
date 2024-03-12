@@ -24,14 +24,26 @@ namespace HotelBookingSystem.Services
                                         .GroupBy(x => x.Room.RoomTypeId)//groubibing the daily corresponing rooms by the type
                                         .Select(roomTypeIdGroub => new
                                         {
-                                              RoomTypeId = roomTypeIdGroub.Key,
-                                              numberAvailableRooms = roomTypeIdGroub.Count()
-                                        })   
+                                            RoomTypeId = roomTypeIdGroub.Key,
+                                            numberAvailableRooms = roomTypeIdGroub.Count()
+                                        })
+                                        .Where(x => x.numberAvailableRooms >= calculateNumOfRoomsNeeded(
+                                                                               numOfAdults
+                                                                               , numOfChildren
+                                                                               , db.RoomTypes.First(roomType=>roomType.Id == x.RoomTypeId).MaxAdults
+                                                                               , db.RoomTypes.First(roomType => roomType.Id == x.RoomTypeId).MaxChildren
+                                                                               ))
                 });
             // TODO: complete this Method
-
+            
             // TODO: implement calculateNumOfRoomsNeeded
-                            
+
+        }
+        private int calculateNumOfRoomsNeeded(int numOfAdults, int numOfChildren, int maxAdultsPerRoom, int maxChildrenPerRoom)
+        {
+            var numOfRoomsForChildren = (numOfChildren % maxChildrenPerRoom == 0)? numOfChildren/maxChildrenPerRoom : (numOfChildren / maxChildrenPerRoom) +1;
+            var numOfRoomsForAdults = (numOfAdults % maxAdultsPerRoom == 0) ? numOfAdults / maxAdultsPerRoom : (numOfChildren / maxChildrenPerRoom) + 1;
+            return Math.Max(numOfRoomsForChildren, numOfRoomsForAdults);
         }
     }
 }
