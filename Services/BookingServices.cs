@@ -11,9 +11,9 @@ namespace HotelBookingSystem.Services
         {
             this.db = db;
         }
-        public void GetDailyAvailableRoomtypes(DateTime checkIn, DateTime checkOut, int numOfAdults, int numOfChildren)
+        public IEnumerable<object> GetDailyAvailableRoomtypes(DateTime checkIn, DateTime checkOut, int numOfAdults, int numOfChildren)
         {
-            IEnumerable<object> availableRoomtypes = db.DailyRoomAvailablities
+            IEnumerable<object> dailyAvailableRoomtypes = db.DailyRoomAvailablities
                 .Where(x => x.IsAvailable && x.Day >= checkIn && x.Day < checkOut) //all available rooms between checkIn & checkOut
                 .Include(x => x.Room)
                 .GroupBy(x => x.Day)//each day with all corresponding available rooms
@@ -34,15 +34,19 @@ namespace HotelBookingSystem.Services
                                                                                , db.RoomTypes.First(roomType => roomType.Id == x.RoomTypeId).MaxChildren
                                                                                ))
                 });
-            // TODO: complete this Method
-            
-            // TODO: implement calculateNumOfRoomsNeeded
 
+
+            return dailyAvailableRoomtypes;
         }
         private int calculateNumOfRoomsNeeded(int numOfAdults, int numOfChildren, int maxAdultsPerRoom, int maxChildrenPerRoom)
         {
-            var numOfRoomsForChildren = (numOfChildren % maxChildrenPerRoom == 0)? numOfChildren/maxChildrenPerRoom : (numOfChildren / maxChildrenPerRoom) +1;
-            var numOfRoomsForAdults = (numOfAdults % maxAdultsPerRoom == 0) ? numOfAdults / maxAdultsPerRoom : (numOfChildren / maxChildrenPerRoom) + 1;
+            var numOfRoomsForChildren = (numOfChildren % maxChildrenPerRoom == 0)
+                ? numOfChildren/maxChildrenPerRoom 
+                : (numOfChildren / maxChildrenPerRoom) +1;
+
+            var numOfRoomsForAdults = (numOfAdults % maxAdultsPerRoom == 0) 
+                ? numOfAdults / maxAdultsPerRoom 
+                : (numOfChildren / maxChildrenPerRoom) + 1;
             return Math.Max(numOfRoomsForChildren, numOfRoomsForAdults);
         }
     }
