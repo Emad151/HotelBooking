@@ -11,6 +11,8 @@ namespace HotelBookingSystem.Pages
         private HotelBookingSystemContext db;
         private BookingServices services;
 
+        public IEnumerable<object>? DailyAvailableRoomtypes { get; set; }
+
         public ReservationResultModel(HotelBookingSystemContext db, BookingServices services)
         {
             this.db = db;
@@ -18,7 +20,7 @@ namespace HotelBookingSystem.Pages
         }
         public void OnGet(DateTime checkIn, DateTime CheckOut, int NumberOfChildren, int NumberOfAdults)
         {
-            services.GetDailyAvailableRoomtypes(checkIn, CheckOut, NumberOfAdults, NumberOfChildren);
+            DailyAvailableRoomtypes = services.GetDailyAvailableRoomtypes(checkIn, CheckOut, NumberOfAdults, NumberOfChildren);
         }
     }
 }
