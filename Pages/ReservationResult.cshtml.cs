@@ -8,19 +8,17 @@ namespace HotelBookingSystem.Pages
 {
     public class ReservationResultModel : PageModel
     {
-        private HotelBookingSystemContext db;
         private BookingServices services;
 
-        public IEnumerable<object>? DailyAvailableRoomtypes { get; set; }
+        public IEnumerable<BookingAvailableRooms> AvailableRoomsGroupedByType { get; set; } = new List<BookingAvailableRooms>();
 
-        public ReservationResultModel(HotelBookingSystemContext db, BookingServices services)
+        public ReservationResultModel(BookingServices services)
         {
-            this.db = db;
             this.services = services;
         }
-        public void OnGet(DateTime checkIn, DateTime CheckOut, int NumberOfChildren, int NumberOfAdults)
+        public void OnGet(DateTime checkIn, DateTime CheckOut)
         {
-            DailyAvailableRoomtypes = services.GetDailyAvailableRoomtypes(checkIn, CheckOut, NumberOfAdults, NumberOfChildren);
+            AvailableRoomsGroupedByType = services.GetBookingAvailableRoomTypes(checkIn, CheckOut);
         }
     }
 }

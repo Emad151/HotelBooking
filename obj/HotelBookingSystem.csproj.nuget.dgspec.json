@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CSharp_learning\\HotelBookingSystem\\HotelBooking\\HotelBookingSystem.csproj": {}
+    "D:\\PracticingRazor\\HotelBookingSystem\\HotelBookingSystem.csproj": {}
   },
   "projects": {
-    "D:\\CSharp_learning\\HotelBookingSystem\\HotelBooking\\HotelBookingSystem.csproj": {
+    "D:\\PracticingRazor\\HotelBookingSystem\\HotelBookingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CSharp_learning\\HotelBookingSystem\\HotelBooking\\HotelBookingSystem.csproj",
+        "projectUniqueName": "D:\\PracticingRazor\\HotelBookingSystem\\HotelBookingSystem.csproj",
         "projectName": "HotelBookingSystem",
-        "projectPath": "D:\\CSharp_learning\\HotelBookingSystem\\HotelBooking\\HotelBookingSystem.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\CSharp_learning\\HotelBookingSystem\\HotelBooking\\obj\\",
+        "projectPath": "D:\\PracticingRazor\\HotelBookingSystem\\HotelBookingSystem.csproj",
+        "packagesPath": "C:\\Users\\Emad\\.nuget\\packages\\",
+        "outputPath": "D:\\PracticingRazor\\HotelBookingSystem\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Emad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +37,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -80,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

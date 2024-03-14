@@ -11,43 +11,35 @@ namespace HotelBookingSystem.Services
         {
             this.db = db;
         }
-        public IEnumerable<object> GetDailyAvailableRoomtypes(DateTime checkIn, DateTime checkOut, int numOfAdults, int numOfChildren)
+        public IEnumerable<BookingAvailableRooms> GetBookingAvailableRoomTypes(DateTime checkIn, DateTime checkOut)
         {
-            IEnumerable<object> dailyAvailableRoomtypes = db.DailyRoomAvailablities
-                .Where(x => x.IsAvailable && x.Day >= checkIn && x.Day < checkOut) //all available rooms between checkIn & checkOut
-                .Include(x => x.Room)
-                .GroupBy(x => x.Day)//each day with all corresponding available rooms
-                .Select(dayGroup => new
-                {
-                    day = dayGroup.Key,
-                    groupedRoomTypes = dayGroup
-                                        .GroupBy(x => x.Room.RoomTypeId)//groubibing the daily corresponing rooms by the type
-                                        .Select(roomTypeIdGroub => new
-                                        {
-                                            RoomTypeId = roomTypeIdGroub.Key,
-                                            numberAvailableRooms = roomTypeIdGroub.Count()
-                                        })
-                                        .Where(x => x.numberAvailableRooms >= calculateNumOfRoomsNeeded(
-                                                                               numOfAdults
-                                                                               , numOfChildren
-                                                                               , db.RoomTypes.First(roomType=>roomType.Id == x.RoomTypeId).MaxAdults
-                                                                               , db.RoomTypes.First(roomType => roomType.Id == x.RoomTypeId).MaxChildren
-                                                                               ))
-                });
-
-
-            return dailyAvailableRoomtypes;
+            var availableRooms = GetAvailableRoomsWithin(checkIn, checkOut);
+            var availableRoomsGroupedByType = availableRooms.GroupBy(r => r.RoomTypeId)
+                                                .Select(group => new BookingAvailableRooms
+                                                {
+                                                    roomType = group.First().RoomType,
+                                                    numOfAvailableRooms = group.Count()
+                                                });
+            return availableRoomsGroupedByType;
         }
-        private int calculateNumOfRoomsNeeded(int numOfAdults, int numOfChildren, int maxAdultsPerRoom, int maxChildrenPerRoom)
+        public int calculateNumOfRoomsNeeded(int numOfAdults, int numOfChildren, int maxAdultsPerRoom, int maxChildrenPerRoom)
         {
             var numOfRoomsForChildren = (numOfChildren % maxChildrenPerRoom == 0)
-                ? numOfChildren/maxChildrenPerRoom 
-                : (numOfChildren / maxChildrenPerRoom) +1;
+                ? numOfChildren / maxChildrenPerRoom
+                : (numOfChildren / maxChildrenPerRoom) + 1;
 
-            var numOfRoomsForAdults = (numOfAdults % maxAdultsPerRoom == 0) 
-                ? numOfAdults / maxAdultsPerRoom 
+            var numOfRoomsForAdults = (numOfAdults % maxAdultsPerRoom == 0)
+                ? numOfAdults / maxAdultsPerRoom
                 : (numOfChildren / maxChildrenPerRoom) + 1;
             return Math.Max(numOfRoomsForChildren, numOfRoomsForAdults);
         }
+        private IQueryable<Room> GetAvailableRoomsWithin(DateTime checkIn, DateTime checkOut)
+        {
+            return db.Rooms
+                     .Where(x => !x.Bookings.Any(b => 
+                                            (checkIn >= b.CheckIn && checkIn < b.CheckOut)
+                                             || (checkOut >= b.CheckIn && checkOut < b.CheckOut)));
+        }
+        
     }
 }

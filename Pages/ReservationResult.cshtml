@@ -1,5 +1,13 @@
-﻿@page
+﻿@page "/ReservationResult"
 @model HotelBookingSystem.Pages.ReservationResultModel
 @{
 }
-<h1>Resvation Result</h1>
+<h1>Available room types</h1>
+@foreach(var group in Model.AvailableRoomsGroupedByType)
+{
+    <h2>Room type : @group.roomType.Name</h2> //TODO : OnClick(display the roomtype details)
+    <p>Describtion: @group.roomType.Description</p>
+    <h5>Max Adults: @group.roomType.MaxAdults</h5>
+    <h5>Max Children: @group.roomType.MaxChildren</h5>
+    <h5>Avaiable: @group.numOfAvailableRooms</h5>
+}
