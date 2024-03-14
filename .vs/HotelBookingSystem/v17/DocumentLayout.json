@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|d:\\practicingrazor\\hotelbookingsystem\\pages\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|solutionrelative:pages\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|d:\\practicingrazor\\hotelbookingsystem\\pages\\booking.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|solutionrelative:pages\\booking.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|d:\\practicingrazor\\hotelbookingsystem\\pages\\checkavailability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F7BABD1D-353C-4E8C-B74E-35ECE95988A9}|HotelBookingSystem.csproj|solutionrelative:pages\\checkavailability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +22,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CheckAvailability.cshtml",
+              "DocumentMoniker": "D:\\PracticingRazor\\HotelBookingSystem\\Pages\\CheckAvailability.cshtml",
+              "RelativeDocumentMoniker": "Pages\\CheckAvailability.cshtml",
+              "ToolTip": "D:\\PracticingRazor\\HotelBookingSystem\\Pages\\CheckAvailability.cshtml",
+              "RelativeToolTip": "Pages\\CheckAvailability.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAuwB8AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-14T16:42:45.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Booking.cshtml",
+              "DocumentMoniker": "D:\\PracticingRazor\\HotelBookingSystem\\Pages\\Booking.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Booking.cshtml",
+              "ToolTip": "D:\\PracticingRazor\\HotelBookingSystem\\Pages\\Booking.cshtml",
+              "RelativeToolTip": "Pages\\Booking.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-14T16:47:23.743Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +58,7 @@
               "RelativeDocumentMoniker": "Pages\\ReservationResult.cshtml",
               "ToolTip": "D:\\PracticingRazor\\HotelBookingSystem\\Pages\\ReservationResult.cshtml",
               "RelativeToolTip": "Pages\\ReservationResult.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-14T14:21:56.143Z",
               "EditorCaption": ""
