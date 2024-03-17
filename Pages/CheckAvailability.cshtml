@@ -11,13 +11,13 @@
             <div asp-validation-summary="All"></div>
             <form method="post">
                 <div class="mb-3">
-                    <label asp-for="ReservationInfo.CheckIn">CheckIn</label>
-                    <input type="date" asp-for="ReservationInfo.CheckIn" class="form-control" required />
-                    <span asp-validation-for="ReservationInfo.CheckIn"></span>
+                    <label asp-for="BookingDuration.CheckIn">CheckIn</label>
+                    <input type="date" asp-for="BookingDuration.CheckIn" class="form-control" required />
+                    <span asp-validation-for="BookingDuration.CheckIn"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="ReservationInfo.Checkout">Checkout</label>
-                    <input type="date" asp-for="ReservationInfo.Checkout" class="form-control" required />
+                    <label asp-for="BookingDuration.Checkout">Checkout</label>
+                    <input type="date" asp-for="BookingDuration.Checkout" class="form-control" required />
                 </div>
                 
                 

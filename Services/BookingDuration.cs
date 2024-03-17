@@ -1,6 +1,6 @@
 ﻿namespace HotelBookingSystem.Services
 {
-    public record ReservationInfo
+    public record BookingDuration
     {
         public DateTime CheckIn { get; set; }
         public DateTime Checkout { get; set; }

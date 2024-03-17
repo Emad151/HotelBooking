@@ -1,0 +1,57 @@
+﻿@page
+@model HotelBookingSystem.Pages.AvailableRoomTypesModel
+@{
+}
+<h1>Available room types</h1>
+<form method="post">
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>RoomType</th>
+				<th>Describtion</th>
+				<th>Max Adults</th>
+				<th>Max Children</th>
+				<th>Avaiable</th>
+				<th>#roomsNeeded</th>
+			</tr>
+		</thead>
+		<tbody id="tableBody">
+			@foreach (var group in Model.AvailableRoomsGroupedByType)
+			{
+				<tr id="@group.roomType.Id">
+					<td> @group.roomType.Name</td>
+					<td> @group.roomType.Description</td>
+					<td>@group.roomType.MaxAdults</td>
+					<td>@group.roomType.MaxChildren</td>
+					<td>@group.numOfAvailableRooms</td>
+					<td><input type="number" min="0" /></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<input type="hidden" id="chosenRoomTypes" name="chosenRoomTypes" asp-for="ChosenRoomTypes" />
+	<button name="goToCheckOut" id="goToCheckOut" class="btn btn-success" onclick="saveChosenRoomTypestoLocalStorage()">go to checkout</button>
+
+</form>
+@section Scripts {
+	<script>
+		function saveChosenRoomTypestoLocalStorage() {
+			let chosenRoomTypes = []
+			let rows = document.getElementById("tableBody").getElementsByTagName('tr')
+
+			for (let row of rows) {
+				if (row.lastElementChild.firstElementChild.value > 0) {
+					chosenRoomTypes.push({
+						roomTypeId: row.id,
+						numberOfRooms: row.lastElementChild.firstElementChild.value
+					})
+				}
+				
+			}
+			console.log(chosenRoomTypes)
+			document.getElementById('chosenRoomTypes').value = JSON.stringify(chosenRoomTypes)
+			//localStorage.setItem('chosenRoomTypes', JSON.stringify(chosenRoomTypes)) //TODO: clear local storage after booking
+
+		}
+	</script>
+}

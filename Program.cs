@@ -14,13 +14,16 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<HotelBookingSystemContext>();
 
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
 builder.Services.AddScoped<BookingServices, BookingServices>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
 
-
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
