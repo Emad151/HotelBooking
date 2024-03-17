@@ -1,0 +1,34 @@
+﻿@page
+@model CheckAvailabilityModel
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Find avilable room types for your desired days</h1>
+    <div class="row justify-content-center" >
+        <div class="col-md-6">
+            <div asp-validation-summary="All"></div>
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.CheckIn">CheckIn</label>
+                    <input type="date" asp-for="ReservationInfo.CheckIn" class="form-control" required />
+                    <span asp-validation-for="ReservationInfo.CheckIn"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ReservationInfo.Checkout">Checkout</label>
+                    <input type="date" asp-for="ReservationInfo.Checkout" class="form-control" required />
+                </div>
+                
+                
+                <button class="btn btn-success">Check availability</button>
+
+            </form>
+
+
+
+        </div>
+    </div>
+    
+</div>
+
