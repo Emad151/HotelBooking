@@ -10,9 +10,9 @@ namespace HotelBookingSystem.Pages
     public class BookingModel : PageModel
     {
 
-        public List<ChosenRoomType> ChosenRoomTypes {  get; set; }
+        public List<ChosenRoomType> ChosenRoomTypes { get; set; } = new List<ChosenRoomType>();
 
-        public void OnGet(string ChosenRoomTypes)
+        public void OnGet(string ChosenRoomTypes = "[]")
         {
             
             this.ChosenRoomTypes = JsonConvert.DeserializeObject<List<ChosenRoomType>>(ChosenRoomTypes);

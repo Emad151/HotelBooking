@@ -25,7 +25,7 @@ namespace HotelBookingSystem.Pages
 
         public void OnGet(DateTime checkIn, DateTime CheckOut)
         {
-            var duration = JsonConvert.DeserializeObject<BookingDuration>(HttpContext.Session.GetString("BookingDuration"));
+            //var duration = JsonConvert.DeserializeObject<BookingDuration>(HttpContext.Session.GetString("BookingDuration"));
             AvailableRoomsGroupedByType = services.GetBookingAvailableRoomTypes(checkIn, CheckOut);
         }
         public RedirectToPageResult OnPost()

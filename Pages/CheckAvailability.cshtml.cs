@@ -9,15 +9,19 @@ namespace HotelBookingSystem.Pages
     public class CheckAvailabilityModel : PageModel
     {
         [BindProperty]
-        public BookingDuration? BookingDuration { get; set; }
+        public BookingDuration BookingDuration { get; set; } = new BookingDuration();
         public void OnGet()
         {
         }
         public IActionResult OnPost()
         {
-            string jsonBookingDuration = JsonConvert.SerializeObject(BookingDuration);
-            HttpContext.Session.SetString("BookingDuration", jsonBookingDuration);
-            var x = HttpContext.Session.GetString("BookingDuration");
+            #region
+            //string jsonBookingDuration = JsonConvert.SerializeObject(BookingDuration);
+            //HttpContext.Session.SetString("BookingDuration", jsonBookingDuration);
+            //var x = HttpContext.Session.GetString("BookingDuration");
+            #endregion
+
+            //TODO: if booking duration is null do somthing else
             return RedirectToPage("AvailableRoomTypes", BookingDuration);
         }
     }
